@@ -8,7 +8,7 @@ export default function Home() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `https://${process.env.VERCEL_URL}/auth/callback`,
+        redirectTo: `https://1811-assignment-peach.vercel.app/auth/callback`,
       },
     });
     if (error) {
