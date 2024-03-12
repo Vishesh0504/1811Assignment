@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
     await supabase.auth.exchangeCodeForSession(code);
     const user = await supabase.auth.getUser();
-    console.log(user);
+    // console.log(user);
     return NextResponse.redirect(`${requestUrl.origin}/dashboard`, {
       headers: {
         "Set-Cookie": `user=${JSON.stringify(user)}; Path=/; Secure`,
@@ -22,5 +22,4 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  // URL to redirect to after sign in process completes
 }

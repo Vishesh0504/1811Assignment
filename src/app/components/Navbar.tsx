@@ -15,22 +15,31 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { deleteCookie } from "cookies-next";
 
 import { Slider } from "@/components/ui/slider";
 
 import { AuthContext } from "@/app/Context/AuthContext";
+import { supabase } from "../utils/supabase";
+import { useRouter} from "next/navigation";
 
 
 const Navbar = () => {
   const [value, setValue] = useState(4);
   const { user } = useContext(AuthContext);
+  const router = useRouter();
+  const handleLogOut = async()=>{
+    deleteCookie('user');
+    deleteCookie('sb-joxpznrwbokfnxjlidpb-auth-token')
+    setTimeout(()=>{router.push("/")},500);
+  }
+
   let url, email, name;
   if (user) {
     url = user.picture;
     email = user.email;
     name = user.name;
   }
-  // console.log(isOpen);
   return (
     <div className="flex ">
       <div className="flex-1 text-2xl font-semibold text-neutral-800">
@@ -245,7 +254,7 @@ const Navbar = () => {
               />
               <p>Support</p>
             </DropdownMenuItem>
-            <DropdownMenuItem className="flex gap-4 text-sm">
+            <DropdownMenuItem className="flex gap-4 text-sm cursor-pointer" onClick={()=>handleLogOut()}>
               <Image
                 src="/log-out.svg"
                 alt="icon"
