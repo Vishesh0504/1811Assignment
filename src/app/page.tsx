@@ -4,11 +4,12 @@ import Image from "next/image";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 export default function Home() {
   const supabase = createClientComponentClient();
+  console.log(location.origin)
   const handleGoogleAuth = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${location.origin}/auth/callback`,
+        redirectTo: `https://${process.env.VERCEL_URL}/auth/callback`,
       },
     });
     if (error) {
