@@ -41,20 +41,20 @@ const Navbar = () => {
     name = user.name;
   }
   return (
-    <div className="flex ">
-      <div className="flex-1 text-2xl font-semibold text-neutral-800">
+    <div className="flex items-center">
+      <div className="flex-1  md:text-2xl text-lg font-semibold text-neutral-800">
         Projects
       </div>
-      <div className="flex justify-center items-center gap-8">
+      <div className="flex justify-center items-center lg:gap-8 md:gap-6 gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger className="outline-none">
-            <div className="flex text-orange-600 font-semibold bg-orange-50 gap-2 px-4 py-2 border border-orange-400 rounded-md text-sm items-center mr-8">
-              <Image src="/credit.svg" alt="icon" width={20} height={20} />
+            <div className="flex text-orange-600 font-semibold bg-orange-50 gap-2  px-2 py-1 md:px-4 md:py-2 border border-orange-400 rounded-md text-sm items-center ">
+              <Image src="/credit.svg" alt="icon" width={15} height={15} />
               <p>Your Credits:4</p>
-              <Image src="/add.svg" alt="icon" width={25} height={25} />
+              <Image src="/add.svg" alt="icon" width={15} height={15} />
             </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className=" w-[26em] ">
+          <DropdownMenuContent className=" lg:w-[26em] ">
             <DropdownMenuLabel className="flex flex-col gap-1 justify-center items-center mt-2">
               <Image src="/buy.svg" alt="icon" width={20} height={20} />
               <p className="text-base">Buy more credits</p>
@@ -143,7 +143,7 @@ const Navbar = () => {
                 alt="icon"
                 width={40}
                 height={25}
-                className="rounded-full cursor-pointer"
+                className="rounded-full cursor-pointer max-md:size-6"
               />
             </div>
           </DropdownMenuTrigger>
@@ -250,7 +250,6 @@ const Navbar = () => {
                 alt="icon"
                 width={20}
                 height={20}
-                className="rounded-full cursor-pointer"
               />
               <p>Support</p>
             </DropdownMenuItem>
