@@ -11,22 +11,25 @@ const Page = () => {
   const { user, isAuthenticated } = useContext(AuthContext);
   return (
     <div className="flex w-screen h-screen">
-      <div className="xl:w-1/6 p-2 ">
-        {!sidebarOpen&&<button className="xl:hidden max-xl:m-2" onClick={() => setSidebarOpen(!sidebarOpen)}>
+      <div className="min-w-14 xl:w-1/6 p-2 ">
+        {!sidebarOpen?(<button className="xl:hidden max-xl:m-2" onClick={() => setSidebarOpen(!sidebarOpen)}>
           <Image
             src="/menu.png"
             alt="menu"
             width={20}
             height={20}
           />
-        </button>}
+        </button>):
+        (<div className="flex-1 w-full bg-black">
+
+        </div>)}
 
         <div className={` h-full  ${sidebarOpen ?'absolute z-50 bg-white':'max-xl:hidden'}`}>
           <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
         </div>
       </div>
 
-      <div className="w-full flex flex-col p-2 md:p-4 sticky">
+      <div className="w-full flex flex-col p-2 md:p-4 sticky grow-0">
         <Navbar />
         <div className="flex flex-col mt-6 ">
           <div className="flex-1 flex justify-between">
